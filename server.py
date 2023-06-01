@@ -21,20 +21,15 @@ app.add_middleware(
 
 script_dir = os.path.dirname(__file__)
 print(script_dir)
-rel_path = "data/1663398860418/"
+rel_path = "data/mapimages/"
 abs_file_path = os.path.join(script_dir, rel_path)
 # print(abs_file_path)
-
-
 
 @app.get('/')
 def main():
     return "Hello world"
 
-@app.get('/images/{z}/{x}/{y}',response_class=FileResponse)
+@app.get('/images',response_class=FileResponse)
 async def images(z: str, x: str, y: str):
-    image =  os.path.join(rel_path, z,x,y)
-    print(image)
 
     return image
-
